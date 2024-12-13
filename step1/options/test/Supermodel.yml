@@ -35,7 +35,7 @@ network_g:
 
 # path
 path:
-  pretrain_network_g: ./experiments/Supermodel-step1/models/net_g.pth
+  pretrain_network_g: ./NLOS-LTM/step1/experiments/Supermodel/models/net_g.pth
   strict_load_g: true
   resume_state: ~
 

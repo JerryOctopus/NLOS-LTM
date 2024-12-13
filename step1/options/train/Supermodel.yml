@@ -109,7 +109,7 @@ logger:
 visdom:
   display_winsize: 256
   display_id: 1
-  display_port: 8805
+  display_port: 8007
   display_single_pane_ncols: 0
   no_html: false
 

@@ -47,6 +47,27 @@ datasets/NLOS_Passive/Supermodel/test/gt_test/5921_1.png
 ```
 Alternatively, you can read the dataset directly from the `folder` or or use methods such as `.lmdb` or other approaches
 ### step2
+Similar to step 1, the dataset can be loaded from a .txt file, a folder, .lmdb, or other methods.
+
+## Training
+To train NLOS-OT, you can begin the training by:
+```python
+# step1
+CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 --master_port=4201  --use_env basicsr/train.py -opt options/train/Supermodel.yml --launcher pytorch
+
+# step2
+CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 --master_port=4201 --use_env basicsr/train.py -opt options/train/Supermodel.yml --launcher pytorch
+```
+## Evaluation
+To evaluate NLOS-OT, you can run:
+```python
+# step1
+CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 --master_port=4201 basicsr/test.py -opt ./options/test/Supermodel.yml --launcher pytorch
+
+# step2
+CUDA_VISIBLE_DEVICES=2 python -m torch.distributed.launch --nproc_per_node=1 --master_port=4201 --use_env basicsr/test.py -opt ./options/test/S-C_dark_1_d100_wall.yml --launcher pytorch
+
+```
 
 
 ## Citation
