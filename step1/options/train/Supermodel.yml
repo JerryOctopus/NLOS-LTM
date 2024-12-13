@@ -1,0 +1,119 @@
+# ------------------------------------------------------------------------
+# Copyright (c) 2022 megvii-model. All Rights Reserved.
+# ------------------------------------------------------------------------
+# Modified from BasicSR (https://github.com/xinntao/BasicSR)
+# Copyright 2018-2020 BasicSR Authors
+# ------------------------------------------------------------------------
+# general settings
+name: Supermodel-step1
+model_type: ImageRestorationModel
+scale: 1
+num_gpu: 1
+manual_seed: 10
+
+datasets:
+  train:
+    name: Supermodel-train
+    type: PairedImageDataset
+    dataroot_gt: ./datasets/Supermodel/train/sharp_1.txt
+    dataroot_lq: ./datasets/Supermodel/train/sharp_1.txt
+
+    filename_tmpl: '{}'
+    io_backend:
+      type: txt
+
+    gt_size: 256
+    use_flip: true
+    use_rot: true
+
+    # data loader
+    use_shuffle: true
+    num_worker_per_gpu: 8
+    batch_size_per_gpu: 16
+    dataset_enlarge_ratio: 1
+    prefetch_mode: ~
+
+  val:
+    name: Supermodel-val
+    type: PairedImageDataset
+    dataroot_gt: ./datasets/Supermodel/val/sharp_1.txt
+    dataroot_lq: ./datasets/Supermodel/val/sharp_1.txt
+
+    io_backend:
+      type: txt
+
+    gt_size: 256
+
+
+network_g:
+  type: NLOSStyleLocal
+  width: 64
+  enc_blk: [64, 128, 256, 512, 512, 512]
+  dec_blk: [64, 128, 256, 512, 512, 512]
+
+# path
+path:
+  pretrain_network_g: ~
+  strict_load_g: true
+  resume_state: ~
+
+# training settings
+train:
+  optim_g:
+    type: Adam
+    lr: !!float 1e-4
+
+  scheduler:
+    type: TrueCosineAnnealingLR
+    T_max: 600000
+    eta_min: !!float 1e-8
+
+  total_iter: 600000
+  warmup_iter: -1 # no warm up
+  display_freq: 10
+
+  # losses
+  pixel_opt:
+    type: PSNRLoss
+    loss_weight: 1
+    reduction: mean
+
+# validation settings
+val:
+  val_freq: !!float 1e4
+  save_img: False
+  max_minibatch: 8
+  display_freq: 50
+
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: false
+
+# logging settings
+logger:
+  print_freq: 50000
+  save_checkpoint_freq: !!float 2 
+  use_tb_logger: true
+  wandb:
+    project: ~
+    resume_id: ~
+
+# visdom settings
+visdom:
+  display_winsize: 256
+  display_id: 1
+  display_port: 8805
+  display_single_pane_ncols: 0
+  no_html: false
+
+# dist training settings
+dist_params:
+  backend: nccl
+  port: 29500
