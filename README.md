@@ -45,8 +45,9 @@ datasets/NLOS_Passive/Supermodel/test/gt_test/5592_1.png
 datasets/NLOS_Passive/Supermodel/test/gt_test/5921_1.png
 
 ```
-Alternatively, you can read the dataset directly from the `folder` or use the `.lmdb` format.
-### step1
+Alternatively, you can read the dataset directly from the `folder` or or use methods such as `.lmdb` or other approaches
+### step2
+
 
 ## Citation
 
