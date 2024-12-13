@@ -2,11 +2,11 @@
 
   <p align="center">
     <a href="">Jiarui Zhang</a>,
-    <a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=1t-Lr8gAAAAJ">Ruixu Geng</a>,
+    <a href="">Ruixu Geng</a>,
     <a href="">Xiaolong Du</a>,     
-    <a href="https://scholar.google.com.hk/citations?user=MVOCn1AAAAAJ&hl=zh-CN&oi=ao">Yan Chen</a>,
-    <a href="https://scholar.google.com.hk/citations?user=7sFMIKoAAAAJ&hl=zh-CN&oi=ao">Houqiang Li</a>,
-    <a href="https://scholar.google.com.hk/citations?user=EHmyBNAAAAAJ&hl=zh-CN&oi=ao">Yang Hu</a>, 
+    <a href="">Yan Chen</a>,
+    <a href="">Houqiang Li</a>,
+    <a href="">Yang Hu</a>
     <br>
     University of Science and Technology of China
     <br>
@@ -65,7 +65,7 @@ To evaluate NLOS-OT, you can run:
 CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 --master_port=4201 basicsr/test.py -opt ./options/test/Supermodel.yml --launcher pytorch
 
 # step2
-CUDA_VISIBLE_DEVICES=2 python -m torch.distributed.launch --nproc_per_node=1 --master_port=4201 --use_env basicsr/test.py -opt ./options/test/S-C_dark_1_d100_wall.yml --launcher pytorch
+CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 --master_port=4201 --use_env basicsr/test.py -opt ./options/test/S-C_dark_1_d100_wall.yml --launcher pytorch
 
 ```
 
