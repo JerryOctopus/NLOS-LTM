@@ -74,10 +74,14 @@ CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 --m
 
 If you find our work useful in your research, please consider citing:
 ```
-@article{zhang2023passive,
-  title={Passive Non-Line-of-Sight Imaging with Light Transport Modulation},
+@ARTICLE{nlosltm,
   author={Zhang, Jiarui and Geng, Ruixu and Du, Xiaolong and Chen, Yan and Li, Houqiang and Hu, Yang},
-  journal={arXiv preprint arXiv:2312.16014},
-  year={2023}
-}
+  journal={IEEE Transactions on Image Processing}, 
+  title={Passive Non-Line-of-Sight Imaging with Light Transport Modulation}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1-1},
+  keywords={Imaging;Image reconstruction;Nonlinear optics;Image restoration;Relays;Image resolution;Degradation;Computational modeling;Cameras;Surface reconstruction;Non-line-of-sight imaging;light transport conditions},
+  doi={10.1109/TIP.2024.3518097}}
 ```
