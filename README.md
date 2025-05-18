@@ -79,9 +79,9 @@ If you find our work useful in your research, please consider citing:
   journal={IEEE Transactions on Image Processing}, 
   title={Passive Non-Line-of-Sight Imaging with Light Transport Modulation}, 
   year={2024},
-  volume={},
+  volume={34},
   number={},
-  pages={1-1},
+  pages={410-424},
   keywords={Imaging;Image reconstruction;Nonlinear optics;Image restoration;Relays;Image resolution;Degradation;Computational modeling;Cameras;Surface reconstruction;Non-line-of-sight imaging;light transport conditions},
   doi={10.1109/TIP.2024.3518097}}
 ```
